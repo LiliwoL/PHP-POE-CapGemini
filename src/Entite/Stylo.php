@@ -2,7 +2,7 @@
 
 namespace App\Entite;
 
-class Ramette extends Article
+class Stylo extends Article
 {
     public function __construct(
         string $marque,
@@ -10,7 +10,7 @@ class Ramette extends Article
         string $designation,
         float $prixUnitaire,
         int $qteStock,
-        private int $grammage,
+        private string $couleur,
         ?int $idArticle = null,
     ) {
         parent::__construct($marque, $reference, $designation, $prixUnitaire, $qteStock, $idArticle);
@@ -19,19 +19,21 @@ class Ramette extends Article
     public function __toString()
     {
         return sprintf(
-            "%s Ramette [grammage=%s]\n",
+            "%s Stylo [couleur=%s]\n",
             parent::__toString(),
-            $this->grammage
+            $this->couleur
         );
     }
-    public function getGrammage(): int
+
+    public function getCouleur(): string
     {
-        return $this->grammage;
+        return $this->couleur;
     }
 
-    public function setGrammage(int $grammage): self
+
+    public function setCouleur(string $couleur): self
     {
-        $this->grammage = $grammage;
+        $this->couleur = $couleur;
 
         return $this;
     }
