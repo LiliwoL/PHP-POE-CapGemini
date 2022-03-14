@@ -10,3 +10,5 @@ $ramette = new Ramette("Xerox");
 $ramette->setGrammage(180);
 
 var_dump($ramette);
+
+echo $ramette;

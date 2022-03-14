@@ -17,8 +17,10 @@ class Ramette extends Article
     // Méthode toString
     public function __toString()
     {
-        return "";
+        return "Je suis une ramette de grammage: " . $this->_grammage;
     }
+
+   
 
     /*
         Getters et Setters

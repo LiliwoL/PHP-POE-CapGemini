@@ -1,5 +1,10 @@
 # TP 1
 
+## Enoncé
+
+On demande ici de créer les entités correspondantes au diagramme de classe fourni.
+
+***
 
 ## Initialisation de composer
 
@@ -32,7 +37,7 @@ par
         }
     },
 
-#### Fichier principale du projet
+#### Fichier principal du projet
 
 Le fichier principal du projet **index.php** contiendra:
 
@@ -45,3 +50,13 @@ Dans les classes du dossier **src/**, on pourra définir le namespace avec:
 
     <?php
     namespace App\Entite;
+
+
+#### Dump de l'autoload
+
+Dans le cas où l'autoload e composer n'est pas correct, vous pouvez faire un **dump**:
+
+    composer dump
+
+***
+

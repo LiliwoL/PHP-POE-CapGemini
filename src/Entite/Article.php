@@ -13,12 +13,6 @@ abstract class Article
        $this->_marque = $marque;
     }
 
-    // Méthode toString
-    public function __toString()
-    {
-        return "";
-    }
-
     /*
         Getters et Setters
     */
