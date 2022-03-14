@@ -1,7 +1,7 @@
 {
     "name": "eni/tp1",
     "autoload": {
-        "psr-4": {
+        "psr-4": {            
             "App\\": "src/"
         }
     },
