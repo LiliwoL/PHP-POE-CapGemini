@@ -224,3 +224,18 @@ Avec la commande suivante, les tests placés dans le fichier précédent vont ê
 
     OK (4 tests, 5 assertions)
 
+
+***
+
+
+## Qualité du code
+
+On va utiliser **PhpCodeSniffer**
+
+### Installation
+
+    composer require squizlabs/php_codesniffer --dev
+
+### Utilisation
+
+    php vendor/bin/phpcs src
