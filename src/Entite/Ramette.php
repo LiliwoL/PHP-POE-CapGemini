@@ -4,20 +4,25 @@ namespace App\Entite;
 
 class Ramette extends Article
 {
-    // Attributs
-    private int $_grammage;
-
-    // Constructeur
-    public function __construct( $marque )
-    {
-        // Constructeur parent
-       parent::__construct($marque);
+    public function __construct(
+        string $marque,
+        string $reference,
+        string $designation,
+        float $prixUnitaire,
+        int $qteStock,
+        private int $grammage,
+        ?int $idArticle = null,
+    ) {
+        parent::__construct($marque, $reference, $designation, $prixUnitaire, $qteStock, $idArticle);
     }
 
-    // Méthode toString
     public function __toString()
     {
-        return "Je suis une ramette de grammage: " . $this->_grammage;
+        return sprintf(
+            "%s Ramette [grammage=%s]\n",
+            parent::__toString(),
+            $this->grammage
+        );
     }
 
    
