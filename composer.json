@@ -11,5 +11,7 @@
             "email": "github@liliwol.fr"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
