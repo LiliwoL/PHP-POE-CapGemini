@@ -224,6 +224,9 @@ Avec la commande suivante, les tests placés dans le fichier précédent vont ê
 
     OK (4 tests, 5 assertions)
 
+On peut lancer les test d'un seul fichier ainsi:
+
+    php vendor/bin/phpunit tests/DAL/Storage/DatabaseTest.php
 
 ### Génération d'une configuration de phpunit
 
