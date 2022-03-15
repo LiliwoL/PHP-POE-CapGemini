@@ -37,9 +37,9 @@ $database = Database::getInstance();
 var_dump($database);
 
 // Lancement d'une requête
-$stagiaires = $database
+$articles = $database
             ->getDbh()
-            ->query('SELECT * FROM stagiaires')
+            ->query('SELECT * FROM articles')
             ->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($stagiaires);
+var_dump($articles);
