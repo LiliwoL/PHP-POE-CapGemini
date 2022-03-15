@@ -271,6 +271,24 @@ Il s'agit de créer la couche DAL pour accéder à la base de données avec PDO,
 
 ### Tests
 
-Des tests sont fournis, il faut faire en sorte de créer la table afin qu'elle satisfasse les tests.
+Des tests sont fournis, il faut faire en sorte de créer la classe afin qu'elle satisfasse les tests.
+
+#### Tests de la base de données
+
+Lancement du test de connexion à la base:
+
+```
+% php vendor/bin/phpunit tests/DAL/Storage/DatabaseTest.php
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
+PHPUnit 9.5.18 #StandWithUkraine
+
+.                                                                   1 / 1 (100%)
+
+Time: 00:01.452, Memory: 6.00 MB
+
+OK (1 test, 1 assertion)   
+```
+
+Pour que ça fonctionne, attention au fichier **.env**.
 
 ***
