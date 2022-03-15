@@ -15,6 +15,13 @@ class DatabaseTest extends TestCase
         $dotenv->load(); 
     }
 
+    /**
+     * Test de \DAL\Storage\Database
+     * 
+     * @covers \DAL\Storage\Database::__construct
+     * @covers \DAL\Storage\Database::getInstance
+     * @covers \DAL\Storage\Database::getDbh
+     */
     public function testJePeuxMeConnecterAMaBaseDeDonneesMySQL()
     {
         $database = Database::getInstance();
