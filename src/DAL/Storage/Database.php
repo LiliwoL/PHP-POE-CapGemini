@@ -18,9 +18,17 @@ class Database{
         try {
             // https://www.php.net/manual/fr/class.pdo.php
             $this->dbh = new PDO(
-                "mysql:host=db;port=3306;dbname=formation",
-                "admin",
-                "admin123"
+                /*
+                    Sans dotEnv:
+                    "mysql:host=db;port=3306;dbname=formation",
+                    "admin",
+                    "admin123"
+                */
+
+                // Avec dotenv:
+                $_ENV['DATABASE_DSN'],
+                $_ENV['DATABASE_USERNAME'],
+                $_ENV['DATABASE_PASSWORD']
             );
 
             // Définition du mode d'erreur de PDO en Exception

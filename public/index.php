@@ -26,6 +26,11 @@ use App\DAL\Storage\Database;
 /*
     ****************************** DAL *********
 */
+
+// Chargement du .env
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
 // Récupération de l'Instance de la Database
 $database = Database::getInstance();
 var_dump($database);
