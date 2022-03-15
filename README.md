@@ -260,3 +260,17 @@ On va utiliser **PhpCodeSniffer**
 ### Utilisation
 
     php vendor/bin/phpcs src
+
+***
+
+# TP 2
+
+## Enoncé
+
+Il s'agit de créer la couche DAL pour accéder à la base de données avec PDO, et de créer la classe **ArticleMySQLStorage.php**.
+
+### Tests
+
+Des tests sont fournis, il faut faire en sorte de créer la table afin qu'elle satisfasse les tests.
+
+***
