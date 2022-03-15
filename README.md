@@ -225,6 +225,24 @@ Avec la commande suivante, les tests placés dans le fichier précédent vont ê
     OK (4 tests, 5 assertions)
 
 
+### Génération d'une configuration de phpunit
+
+Afin de faire des tests de couverture, il faudra:
+
+* Avoir XDebug  installé et configuré
+* Configuration de PHPUnit
+
+```bash
+php vendor/bin/phpunit --generate-configuration
+```
+
+### Couverture de code
+
+```bash
+php vendor/bin/phpunit --coverage-html out/ tests/
+```
+On pourra trouver les rapports dans le sossier **out/**
+
 ***
 
 
