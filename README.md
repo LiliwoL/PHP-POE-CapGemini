@@ -239,7 +239,7 @@ php vendor/bin/phpunit --generate-configuration
 ### Couverture de code
 
 ```bash
-php vendor/bin/phpunit --coverage-html out/ tests/
+php vendor/bin/phpunit --coverage-html out/
 ```
 On pourra trouver les rapports dans le sossier **out/**
 

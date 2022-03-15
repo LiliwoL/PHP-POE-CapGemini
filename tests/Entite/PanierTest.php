@@ -28,7 +28,10 @@ class PanierTest extends TestCase
         $this->articles->append(new Stylo("Parker", "PlumeP", "Stylo Plume Parker", 5.5, 5, "noir"));
     }
 
-    // Méthode pour vérifier le montant du panier
+    /**
+     * Méthode pour vérifier le montant du panier
+     * @covers Panier::addLigne
+     */
     public function testJePeuxAjouterUneLigneAMonPanier()
     {
         $panier = new Panier();

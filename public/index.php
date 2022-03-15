@@ -6,6 +6,23 @@ require dirname(__DIR__).'/vendor/autoload.php';
 use App\Entite\Ramette;
 use App\Entite\Stylo;
 
+use App\DAL\Storage\Database;
+
+// Récupération de l'Instance de la Database
+$database = Database::getInstance();
+var_dump($database);
+
+// Lancement d'une requête
+$stagiaires = $database
+            ->getDbh()
+            ->query('SELECT * FROM stagiaires')
+            ->fetchAll(PDO::FETCH_ASSOC);
+
+var_dump($stagiaires);
+
+
+
+
 // Instance de ramette
     $ramette = new Ramette("Xerox", "XB41", "Superbe ramette", 154, 1000, 180);
     $ramette->setGrammage(180);
