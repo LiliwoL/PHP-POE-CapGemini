@@ -6,6 +6,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
 use App\Entite\Ramette;
 use App\Entite\Stylo;
 use App\DAL\Storage\Database;
+use Dotenv\Dotenv;
 
 /*
     ****************** Entités *******************
