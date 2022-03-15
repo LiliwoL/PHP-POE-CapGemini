@@ -41,6 +41,11 @@ class Database{
         }
 
         return self::$instance;
+
+        /*
+         On pourrait simplifier en une ligne
+         return self::$instance ?? new Database();
+        */
     }
 
     // Getter pour le DB Handler
