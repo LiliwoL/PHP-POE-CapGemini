@@ -27,7 +27,7 @@ class Stagiaire{
      */
     public static function fromState( array $state ) : Stagiaire
     {
-        // On devrait vértifier le contenu de $state
+        // On devrait vérifier le contenu de $state !!
 
         // Renvoi d'une instance de l'entité
         return new self(

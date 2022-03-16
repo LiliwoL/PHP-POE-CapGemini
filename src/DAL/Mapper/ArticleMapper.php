@@ -30,6 +30,9 @@ class ArticleMapper
 
     /**
      * Méthode de transformation d'un tableau en entité Article (Stylo ou Ramette)
+     * 
+     * Attention, le diagramme de classe  TP3 demande un autre nom de méthode mapRowToStylo qui
+     * n'est pas très adapté ici
      *
      * @param array $row Un tableau à transformer
      * @return Article

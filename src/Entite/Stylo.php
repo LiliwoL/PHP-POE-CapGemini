@@ -46,6 +46,8 @@ class Stylo extends Article
      */
     public static function fromState(array $state): Stylo
     {
+        // On devrait vérifier le contenu de $state !!
+        
         return new self(
             $state['marque'],
             $state['reference'],
