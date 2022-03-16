@@ -84,7 +84,7 @@ class ArticleMapperTest extends TestCase
     public function testJePeuxRecupererTousLesArticlesTriesParQuantiteEnStock()
     {
         $articles = $this->articleMapper->findAllOrderByQteStockAsc();
-
+        
         $this->assertCount(4, $articles);
 
         $this->assertInstanceOf(Ramette::class, $articles[0]);

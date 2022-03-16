@@ -3,10 +3,13 @@
 require dirname(__DIR__).'/vendor/autoload.php';
 
 // Use du namespace 
-use App\Entite\Ramette;
-use App\Entite\Stylo;
-use App\DAL\Storage\Database;
+
+use App\BLL\StagiaireManager;
 use Dotenv\Dotenv;
+use App\Entite\Stylo;
+use App\Entite\Ramette;
+use App\DAL\Storage\Database;
+use App\DependencyInjectionContainer;
 
 /*
     ****************** Entités *******************
@@ -48,7 +51,7 @@ var_dump($articles);
     ****************************** Dependancy Injection *********
 */
 
-$dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
+/* $dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
 
 // Affichage de toutes les deps
 $dependencyInjectionContainer->listDependencies();
@@ -60,3 +63,15 @@ echo "A quoi correspond StagiaireMapper::class:" . StagiaireMapper::class;
 
 // Affichage de toutes les deps
 $dependencyInjectionContainer->listDependencies();
+ */
+
+/*
+    ****************** Stagiaire Manager ************
+*/
+
+$dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
+
+// Créer un stagiaire depuis le contrôleur frontal
+$stagiaireManager = $dependencyInjectionContainer->get(StagiaireManager::class);
+
+$stagiaireManager->creerUnStagiaire( "Nicolas" );

@@ -56,7 +56,11 @@ class StagiaireMapper
         );
     }
 
-    // Renvoi d'un tableau d'objets Stagiaire
+    /**
+     * Renvoi d'un tableau d'objets Stagiaire
+     *
+     * @return ArrayObject
+     */
     public function findAll(): ArrayObject
     {
         // La méthode findAll renvoie un tableau de tableau
