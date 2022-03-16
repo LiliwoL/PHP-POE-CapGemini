@@ -8,7 +8,7 @@ use App\Entite\Stagiaire;
 class StagiaireManager
 {
     // A la construction, on aura besoin du Mappe
-    // On utilise la syntaxte PHP 8 (attribut automatiquement créé)
+    // On utilise la syntaxe PHP 8 (attribut automatiquement créé)
     public function __construct( 
         private StagiaireMapper $mapper
     ) {}
