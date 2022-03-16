@@ -35,4 +35,23 @@ class Ramette extends Article
 
         return $this;
     }
+
+    /**
+     * Transformation d'un tableau en entité Ramette
+     * 
+     * @param $state Tableau associatif correspondant à un Ramette
+     * @return Ramette Renvoi une entité Ramette
+     */
+    public static function fromState(array $state): Ramette
+    {
+        return new self(
+            $state['marque'],
+            $state['reference'],
+            $state['designation'],
+            $state['prix_unitaire'],
+            $state['qte_stock'],
+            $state['grammage'],
+            $state['id_article'],
+        );
+    }
 }

@@ -5,7 +5,7 @@ namespace App\DAL\Storage;
 use InvalidArgumentException;
 use PDO;
 
-class ArticleMySQLStorage
+class ArticleMySQLStorage implements ArticleStorage
 {
     private PDO $dbh;
 

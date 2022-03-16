@@ -19,12 +19,17 @@ class Stagiaire{
         return $this->identifiant;
     }
 
-    // Méthode static qui va transformer un tableau en entité Stagiaire
+    /**
+     * Méthode static qui va transformer un tableau en entité Stagiaire
+     *
+     * @param array $state
+     * @return Stagiaire
+     */
     public static function fromState( array $state ) : Stagiaire
     {
         // On devrait vértifier le contenu de $state
 
-        // Renvoi d'une entité
+        // Renvoi d'une instance de l'entité
         return new self(
             $state['nom'],
             $state['identifiant']

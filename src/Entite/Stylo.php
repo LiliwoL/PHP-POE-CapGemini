@@ -37,4 +37,23 @@ class Stylo extends Article
 
         return $this;
     }
+
+    /**
+     * Transformation d'un tableau en entité Stylo
+     * 
+     * @param $state Tableau associatif correspondant à un Stylo
+     * @return Stylo Renvoi une entité Stylo
+     */
+    public static function fromState(array $state): Stylo
+    {
+        return new self(
+            $state['marque'],
+            $state['reference'],
+            $state['designation'],
+            $state['prix_unitaire'],
+            $state['qte_stock'],
+            $state['couleur'],
+            $state['id_article'],
+        );
+    }
 }

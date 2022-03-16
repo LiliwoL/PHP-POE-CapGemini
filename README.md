@@ -292,3 +292,11 @@ OK (1 test, 1 assertion)
 Pour que ça fonctionne, attention au fichier **.env**.
 
 ***
+
+# TP 3
+
+Il faut:
+
+* Créer l’interface ArticleStorage et définir les méthodes présentes dans le diagramme de classe TP3
+* Utiliser l’interface ArticleStorage dans ArticleMySQLStorage
+* Créer ArticleMapper et StyloMapper en vous basant sur le diagramme de classe TP3

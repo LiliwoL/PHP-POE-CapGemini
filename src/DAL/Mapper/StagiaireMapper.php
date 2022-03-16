@@ -59,7 +59,7 @@ class StagiaireMapper
     // Renvoi d'un tableau d'objets Stagiaire
     public function findAll(): ArrayObject
     {
-        // La méthode findall renvoie un tableau de tableau
+        // La méthode findAll renvoie un tableau de tableau
         $results = $this->stagiaireStorage->findAll();
 
         // On veut un tableau d'objets
@@ -69,7 +69,10 @@ class StagiaireMapper
         {
             $collection->append(
                 // Transformation du tableau en entité Stagiaire
-                Stagiaire::fromState( $stagiaire )
+                //Stagiaire::fromState( $stagiaire )
+
+                // On va plutôt créer une méthode exprès pour ça
+                $this->mapRowToStagiaire($stagiaire)
             );
         }
 
@@ -80,5 +83,17 @@ class StagiaireMapper
     {
         // Renvoie un entier
         $this->stagiaireStorage->delete( $id );
+    }
+
+    /**
+     * Appel de FromState
+     *
+     * @param array $row
+     * @return Stagiaire
+     */
+    private function mapRowToStagiaire(array $row): Stagiaire
+    {
+        // Appel de la méthode statique de l'entité Stagiaire
+        return Stagiaire::fromState($row);
     }
 }
