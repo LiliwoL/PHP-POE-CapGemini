@@ -13,4 +13,21 @@ class Stagiaire{
     public function setNom(string $nom){
         $this->nom = $nom;
     }
+
+    public function getIdentifiant()
+    {
+        return $this->identifiant;
+    }
+
+    // Méthode static qui va transformer un tableau en entité Stagiaire
+    public static function fromState( array $state ) : Stagiaire
+    {
+        // On devrait vértifier le contenu de $state
+
+        // Renvoi d'une entité
+        return new self(
+            $state['nom'],
+            $state['identifiant']
+        );
+    }
 }
