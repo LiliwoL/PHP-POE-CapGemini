@@ -43,3 +43,20 @@ $articles = $database
             ->fetchAll(PDO::FETCH_ASSOC);
 
 var_dump($articles);
+
+/*
+    ****************************** Dependancy Injection *********
+*/
+
+$dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
+
+// Affichage de toutes les deps
+$dependencyInjectionContainer->listDependencies();
+
+echo "Quelle dépendance?";
+var_dump($dependencyInjectionContainer->get(StagiaireMapper::class));
+
+echo "A quoi correspond StagiaireMapper::class:" . StagiaireMapper::class;
+
+// Affichage de toutes les deps
+$dependencyInjectionContainer->listDependencies();

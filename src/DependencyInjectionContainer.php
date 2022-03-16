@@ -5,6 +5,7 @@ namespace App;
 use App\DAL\Storage\StagiaireInMemoryStorage;
 use App\DAL\Storage\StagiaireMySQLStorage;
 use App\DAL\Storage\StagiaireStorage;
+use App\DAL\Mapper\StagiaireMapper;
 use LogicException;
 
 class DependencyInjectionContainer
@@ -15,15 +16,20 @@ class DependencyInjectionContainer
 
     private function __construct()
     {
-        if ($_ENV['DATABASE_DRIVER'] === 'mysql') {
-            $stagiaireStorage = new StagiaireMySQLStorage();
+        if ($_ENV['DATABASE_DRIVER'] === 'mysql') 
+        {
+            $stagiaireMapper = new StagiaireMapper(
+                new StagiaireMySQLStorage()
+            );
         } else {
-            $stagiaireStorage = new StagiaireInMemoryStorage([]);
+            $stagiaireMapper = new StagiaireMapper(                
+                new StagiaireInMemoryStorage()
+            );
         }
 
         // Liste des dépendances disponibles
         $this->instances = [
-            StagiaireStorage::class => $stagiaireStorage
+            StagiaireMapper::class => $stagiaireMapper
         ];
     }
 
@@ -42,9 +48,10 @@ class DependencyInjectionContainer
         if (isset($this->instances[$class])) {
             return $this->instances[$class];
         }
-        throw new LogicException('Le service %s n\'existe pas', $class);
+        throw new LogicException("Le service $class n\'existe pas");
     }
 
+    // Méthode pour affichage la liste de toutes les déps
     public function listDependencies(){
         var_dump($this->instances);
     }

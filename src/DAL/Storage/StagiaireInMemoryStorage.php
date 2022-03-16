@@ -7,9 +7,18 @@ class StagiaireInMemoryStorage implements StagiaireStorage
     // Méthodes spécifiques pour le stockage In Memory
     
     // Constructeur spécifique car pas de base de données
-    public function __construct(private array $data){}
-    
+    // Constructeur à la sauce PHP 8 qui définit directement les attributs
+    /*
+        Idem à:
 
+        private array $data;
+        public function __construct( $data ){
+            $this->data = $data;
+        }
+
+    */
+    public function __construct(private array $data = [] ){}
+    
     public function insert(
         string $nom
     ): int

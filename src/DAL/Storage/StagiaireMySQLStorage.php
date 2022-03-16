@@ -5,13 +5,31 @@ namespace App\DAL\Storage;
 use InvalidArgumentException;
 use PDO;
 
-class StagiaireMySQLStorage
+class StagiaireMySQLStorage implements StagiaireStorage
 {
     private PDO $dbh;
 
     public function __construct()
     {
         $this->dbh = Database::getInstance()->getDbh();
+    }
+
+    public function insert(string $nom): int
+    {
+        $sth = $this->dbh->prepare('
+            INSERT INTO stagiaires 
+            (nom)
+            VALUES (:nom)
+        ');
+
+        $sth->execute([
+            ':nom' => $nom
+        ]);
+
+        // LastInsertId renvoie une string ou false
+        // https://www.php.net/manual/fr/pdo.lastinsertid.php
+        // Or, nous on veut un entier!
+        return (int)$this->dbh->lastInsertId();
     }
 
     public function find(int $id): ?array
@@ -31,22 +49,15 @@ class StagiaireMySQLStorage
         return $result;
     }
 
-    public function insert(string $nom): int
+    public function findAll(): array
     {
-        $sth = $this->dbh->prepare('
-            INSERT INTO stagiaires 
-            (nom)
-            VALUES (:nom)
-        ');
+        $sth = $this->dbh->prepare("
+            SELECT * 
+            FROM stagiaires 
+        ");
+        $sth->execute();
 
-        $sth->execute([
-            ':nome' => $nom
-        ]);
-
-        // LastInsertId renvoie une string ou false
-        // https://www.php.net/manual/fr/pdo.lastinsertid.php
-        // Or, nous on veut un entier!
-        return (int)$this->dbh->lastInsertId();
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function update(string $nom, int $id)
@@ -75,16 +86,5 @@ class StagiaireMySQLStorage
         return (int) $sth->execute([
             ':id' => $id
         ]);
-    }
-
-    public function findAll(): array
-    {
-        $sth = $this->dbh->prepare("
-            SELECT * 
-            FROM stagiaires 
-        ");
-        $sth->execute();
-
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
-    }
+    }   
 }
