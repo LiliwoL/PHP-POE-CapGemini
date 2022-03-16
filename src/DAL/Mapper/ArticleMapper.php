@@ -29,13 +29,14 @@ class ArticleMapper
     }
 
     /**
-     * Méthode de transformation d'un tableau en entité Article
+     * Méthode de transformation d'un tableau en entité Article (Stylo ou Ramette)
      *
      * @param array $row Un tableau à transformer
      * @return Article
      */
-    private function mapRowToType(array $row): Article
+    private function mapRowToType( array $row ): Article
     {
+        // Test du type pour savoir quel type d'entité renvoyer
         if ($row['type'] === ArticleStorage::TYPE_STYLO)
         {
             // Transformation du tableau en entité Stylo
