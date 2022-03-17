@@ -12,6 +12,7 @@ use App\DAL\Mapper\RametteMapper;
 use App\DAL\Mapper\StagiaireMapper;
 use App\DAL\Storage\StagiaireStorage;
 
+use App\Controller\StagiaireController;
 use App\DAL\Storage\ArticleMySQLStorage;
 use App\DAL\Storage\StagiaireMySQLStorage;
 use App\DAL\Storage\StagiaireInMemoryStorage;
@@ -58,11 +59,15 @@ class DependencyInjectionContainer
         // On va "encapsuler tous ces mappers au sein du manager
         $articleManager = new ArticleManager($styloMapper, $rametteMapper, $articleMapper);
 
+        // *******************************************
+
         // Liste des dépendances disponibles
         $this->instances = [
             StagiaireManager::class => $stagiaireManager,
             
             ArticleManager::class => $articleManager,
+
+            StagiaireController::class => new StagiaireController($stagiaireManager ),
 
             // On garde ces lignes pour la rétro compatibilité, mais elles ne sont plus utiles!
             StyloMapper::class => $styloMapper,
