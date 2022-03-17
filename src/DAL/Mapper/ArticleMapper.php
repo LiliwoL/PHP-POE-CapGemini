@@ -4,6 +4,8 @@ namespace App\DAL\Mapper;
 
 // L'interface uniquement, pas besoin de MySQL ou InMemory
 use App\DAL\Storage\ArticleStorage;
+use InvalidArgumentException;
+
 
 use App\Entite\Article;
 use App\Entite\Collection;
@@ -14,6 +16,17 @@ class ArticleMapper
 {
     // Constructeur qui fait également la déclaration de l'attribut $adapter
     public function __construct( private ArticleStorage $adapter ){}
+
+    public function findById(int $id): Article
+    {
+        $result = $this->adapter->find($id);
+
+        if ($result === null) {
+            throw new InvalidArgumentException("Article #$id not found");
+        }
+
+        return $this->mapRowToArticle($result);
+    }
 
     public function findAllOrderByQteStockAsc(): Collection
     {
@@ -26,6 +39,23 @@ class ArticleMapper
         }
 
         return $collection;
+    }
+
+    public function findAll(): Collection
+    {
+        $result = $this->adapter->findAll('id_article');
+
+        $collection = new Collection();
+        foreach ($result as $item) {
+            $collection->append($this->mapRowToArticle($item));
+        }
+
+        return $collection;
+    }
+
+    public function delete(int $id)
+    {
+        $this->adapter->delete($id);
     }
 
     /**

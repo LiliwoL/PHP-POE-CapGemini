@@ -2,17 +2,19 @@
 
 namespace App;
 
-use App\BLL\StagiaireManager;
-use App\DAL\Storage\StagiaireInMemoryStorage;
-use App\DAL\Storage\StagiaireMySQLStorage;
-use App\DAL\Storage\StagiaireStorage;
-use App\DAL\Mapper\StagiaireMapper;
-
-use App\DAL\Mapper\ArticleMapper;
-use App\DAL\Mapper\StyloMapper;
-use App\DAL\Storage\ArticleMySQLStorage;
-
 use LogicException;
+use App\BLL\ArticleManager;
+use App\BLL\StagiaireManager;
+use App\DAL\Mapper\StyloMapper;
+use App\DAL\Mapper\ArticleMapper;
+
+use App\DAL\Mapper\RametteMapper;
+use App\DAL\Mapper\StagiaireMapper;
+use App\DAL\Storage\StagiaireStorage;
+
+use App\DAL\Storage\ArticleMySQLStorage;
+use App\DAL\Storage\StagiaireMySQLStorage;
+use App\DAL\Storage\StagiaireInMemoryStorage;
 
 class DependencyInjectionContainer
 {
@@ -43,15 +45,26 @@ class DependencyInjectionContainer
             new ArticleMySQLStorage()
         );
 
+        // Dépendances pour le RametteMapper
+        $rametteMapper = new RametteMapper(
+            new ArticleMySQLStorage()
+        );
+
         // Dépendances pour le ArticleMapper
          $articleMapper = new ArticleMapper(
             new ArticleMySQLStorage()
         );
 
+        // On va "encapsuler tous ces mappers au sein du manager
+        $articleManager = new ArticleManager($styloMapper, $rametteMapper, $articleMapper);
+
         // Liste des dépendances disponibles
         $this->instances = [
             StagiaireManager::class => $stagiaireManager,
+            
+            ArticleManager::class => $articleManager,
 
+            // On garde ces lignes pour la rétro compatibilité, mais elles ne sont plus uitiles!
             StyloMapper::class => $styloMapper,
             ArticleMapper::class => $articleMapper,
         ];
