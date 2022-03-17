@@ -22,7 +22,7 @@ class ArticleMapper
         $collection = new Collection();
 
         foreach ($result as $item) {
-            $collection->append($this->mapRowToType($item));
+            $collection->append($this->mapRowToArticle($item));
         }
 
         return $collection;
@@ -37,7 +37,7 @@ class ArticleMapper
      * @param array $row Un tableau à transformer
      * @return Article
      */
-    private function mapRowToType( array $row ): Article
+    private function mapRowToArticle( array $row ): Article
     {
         // Test du type pour savoir quel type d'entité renvoyer
         if ($row['type'] === ArticleStorage::TYPE_STYLO)
