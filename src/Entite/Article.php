@@ -2,7 +2,9 @@
 
 namespace App\Entite;
 
-abstract class Article
+use JsonSerializable;
+
+abstract class Article implements JsonSerializable
 {
     public function __construct(
         private string $marque,
@@ -90,5 +92,15 @@ abstract class Article
         $this->designation = $designation;
 
         return $this;
+    }
+
+    /**
+     * Pour faire du json_decode sur les attributs privés
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars( $this );
     }
 }

@@ -10,8 +10,9 @@ use App\DAL\Mapper\ArticleMapper;
 
 use App\DAL\Mapper\RametteMapper;
 use App\DAL\Mapper\StagiaireMapper;
-use App\DAL\Storage\StagiaireStorage;
+use App\Controller\ArticleController;
 
+use App\DAL\Storage\StagiaireStorage;
 use App\Controller\StagiaireController;
 use App\DAL\Storage\ArticleMySQLStorage;
 use App\DAL\Storage\StagiaireMySQLStorage;
@@ -68,6 +69,7 @@ class DependencyInjectionContainer
             ArticleManager::class => $articleManager,
 
             StagiaireController::class => new StagiaireController($stagiaireManager ),
+            ArticleController::class => new ArticleController($articleManager),
 
             // On garde ces lignes pour la rétro compatibilité, mais elles ne sont plus utiles!
             StyloMapper::class => $styloMapper,
