@@ -2,7 +2,10 @@
 
 namespace App\Entite;
 
-class Stylo extends Article
+use JsonSerializable;
+use App\DAL\Storage\ArticleStorage;
+
+class Stylo extends Article implements JsonSerializable
 {
     public function __construct(
         string $marque,
@@ -30,7 +33,6 @@ class Stylo extends Article
         return $this->couleur;
     }
 
-
     public function setCouleur(string $couleur): self
     {
         $this->couleur = $couleur;
@@ -57,5 +59,18 @@ class Stylo extends Article
             $state['couleur'],
             $state['id_article'],
         );
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'marque' => $this->getMarque(),
+            'reference' => $this->getReference(),
+            'designation' => $this->getDesignation(),
+            'prix_unitaire' => $this->getPrixUnitaire(),
+            'qte_stock' => $this->getQteStock(),
+            'couleur' => $this->couleur,
+            'type' => ArticleStorage::TYPE_STYLO
+        ];
     }
 }

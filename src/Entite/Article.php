@@ -12,7 +12,7 @@ abstract class Article implements JsonSerializable
         private string $designation,
         private float $prixUnitaire,
         private int $qteStock,
-        private ?int $idArticle = null,
+        private ?int $idArticle = null
     ) {
     }
 
@@ -101,6 +101,6 @@ abstract class Article implements JsonSerializable
      */
     public function jsonSerialize(): mixed
     {
-        return get_object_vars( $this );
+        return get_object_vars($this);
     }
 }
