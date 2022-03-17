@@ -114,7 +114,7 @@ class RametteMapper
      * Méthode de transformation d'un tableau en Ramette 
      *
      * @param array $row Le tableau doit contenir ça et ça
-     * @return Stylo
+     * @return Ramette
      */
     private function mapRowToRamette(array $row): Ramette
     {
