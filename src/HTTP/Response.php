@@ -19,6 +19,7 @@ class Response
     
     /**
      * Quand on fait un appel a cette classe
+     * https://www.php.net/manual/fr/language.oop5.magic.php#object.invoke
      *
      * @return void
      */

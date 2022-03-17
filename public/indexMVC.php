@@ -37,4 +37,7 @@ $stagiaireController = $dependencyInjectionContainer->get( StagiaireController::
 $response = $stagiaireController->list( $request );
 
 // Invoke Response
+
+// Appel à la méthode magique php __invoke()
+// https://www.php.net/manual/fr/language.oop5.magic.php#object.invoke
 $response();

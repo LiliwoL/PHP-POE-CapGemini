@@ -44,7 +44,9 @@ class StagiaireController
                 // https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type
                 // https://developer.mozilla.org/fr/docs/Web/HTTP/Basics_of_HTTP/MIME_types
                 // 'Content-Type' => 'video/ogg'
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
+
+                'Status-Code' => 418
             ]
         );
     }
