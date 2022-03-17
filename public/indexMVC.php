@@ -5,13 +5,8 @@ require dirname(__DIR__).'/vendor/autoload.php';
 // Use du namespace 
 
 use Dotenv\Dotenv;
-use App\Entite\Stylo;
 use App\HTTP\Request;
 use App\Http\Response;
-use App\Entite\Ramette;
-use App\BLL\ArticleManager;
-use App\BLL\StagiaireManager;
-use App\DAL\Storage\Database;
 use App\DependencyInjectionContainer;
 use App\Controller\StagiaireController;
 

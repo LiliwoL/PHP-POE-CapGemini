@@ -29,6 +29,8 @@ class StagiaireController
          */
         $stagiaires = $this->stagiaireManager->listerLesStagiaires();
 
+        // Ici on devrait faire appel à la vue
+        
         return new Response(
             // Body de la réponse
             json_encode( $stagiaires ),

@@ -20,7 +20,7 @@ class Request
     }
 
     /**
-     * Construction d'une requete à partir des données globales du php
+     * Construction d'une instance request à partir des données globales du php
      *
      * @return Request
      */
@@ -32,7 +32,7 @@ class Request
         */
             // On pourrait tester ici le contenu des headers
             // https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
-            // Ici on exigerait que la requête contienne le header Auhorisation et sa valeur à ENI
+            // Ici on exigerait que la requête contienne le header Auhorization et sa valeur à ENI
            /*  if ( $_SERVER['HTTP_AUTHORIZATION'] &&  $_SERVER['HTTP_AUTHORIZATION'] === "ENI")
             {
                 return new Request(
@@ -41,7 +41,7 @@ class Request
     
                     // La requête en cours est elle de type POST?
                     $_SERVER['REQUEST_METHOD'] === 'POST'
-                );               
+                );
             }else{
                 throw new InvalidUrlException("Interdit");
             } */
