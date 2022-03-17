@@ -33,7 +33,7 @@ $dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
 /**
  * @var StagiaireController $stagiaireController
  */
-$stagiaireController = $dependencyInjectionContainer->get(StagiaireController::class);
+$stagiaireController = $dependencyInjectionContainer->get( StagiaireController::class );
 
 // Appel à l'action list
 /**

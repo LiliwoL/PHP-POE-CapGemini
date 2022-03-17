@@ -30,6 +30,9 @@ class Response
             header($key.': '.$value);
         }
 
+        // On ajoute un header de réponse personnalisé
+        header('Application: MadeBy ENI');
+
         echo $this->body;
     }
 }
