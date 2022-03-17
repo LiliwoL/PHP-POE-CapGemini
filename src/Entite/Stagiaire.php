@@ -1,7 +1,10 @@
 <?php
 namespace App\Entite;
 
-class Stagiaire{
+use JsonSerializable;
+
+class Stagiaire implements JsonSerializable
+{
 
     public function __construct(private string $nom, private ?int $identifiant = null){
     }
@@ -34,5 +37,15 @@ class Stagiaire{
             $state['nom'],
             $state['identifiant']
         );
+    }
+
+    /**
+     * Pour faire du json_decode sur les attributs privés
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars( $this );
     }
 }

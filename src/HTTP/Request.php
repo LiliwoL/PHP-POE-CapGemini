@@ -2,6 +2,8 @@
 
 namespace App\HTTP;
 
+use PharIo\Manifest\InvalidUrlException;
+
 class Request
 {
     private $request = [];
@@ -24,8 +26,34 @@ class Request
      */
     public static function createFromGlobal() : Request
     {
+        /*
+            Ce code permettrait d'ajouter un test des entêtes de la requête
+            Pour vérifier la sécurité, une autorisation par exemple
+        */
+            // On pourrait tester ici le contenu des headers
+            // https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
+            // Ici on exigerait que la requête contienne le header Auhorisation et sa valeur à ENI
+           /*  if ( $_SERVER['HTTP_AUTHORIZATION'] &&  $_SERVER['HTTP_AUTHORIZATION'] === "ENI")
+            {
+                return new Request(
+                    // Contenu de la requête fourni par le serveur dans la variable globale $_REQUEST
+                    $_REQUEST,
+    
+                    // La requête en cours est elle de type POST?
+                    $_SERVER['REQUEST_METHOD'] === 'POST'
+                );               
+            }else{
+                throw new InvalidUrlException("Interdit");
+            } */
+        /*
+            ----
+        */
+
         return new Request(
+            // Contenu de la requête fourni par le serveur dans la variable globale $_REQUEST
             $_REQUEST,
+
+            // La requête en cours est elle de type POST?
             $_SERVER['REQUEST_METHOD'] === 'POST'
         );
     }
