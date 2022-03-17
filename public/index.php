@@ -4,10 +4,11 @@ require dirname(__DIR__).'/vendor/autoload.php';
 
 // Use du namespace 
 
-use App\BLL\StagiaireManager;
 use Dotenv\Dotenv;
 use App\Entite\Stylo;
 use App\Entite\Ramette;
+use App\BLL\ArticleManager;
+use App\BLL\StagiaireManager;
 use App\DAL\Storage\Database;
 use App\DependencyInjectionContainer;
 
@@ -75,3 +76,18 @@ $dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
 $stagiaireManager = $dependencyInjectionContainer->get(StagiaireManager::class);
 
 $stagiaireManager->creerUnStagiaire( "Nicolas" );
+
+
+/*
+    ****************** Article Manager ************
+*/
+
+$dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
+
+// Créer un stagiaire depuis le contrôleur frontal
+/**
+ * @var ArticleManager $articleManager
+ */
+$articleManager = $dependencyInjectionContainer->get(ArticleManager::class);
+
+$articleManager->creerStylo("Waterman", "StyloPlume", "Stylo des ministres", 666, 1000, "noir");
