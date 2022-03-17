@@ -47,6 +47,7 @@ class ArticleManager
      *
      * @param string $id Bizarre qu'on attende une string pour un id
      * @return void
+     * @todo Vérifier le cast du param string vers int
      */
     public function supprimerArticle(string $id)
     {
@@ -54,10 +55,18 @@ class ArticleManager
         $this->articleMapper->delete($id);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $id Bizarre qu'on attende une string pour un id
+     * @return void
+     * @todo Vérifier le cast du param string vers int
+     */
     public function decrementerStock(string $id)
     {
         $article = $this->articleMapper->findById($id);
         $article->setQteStock($article->getQteStock() - 1);
+        
         if ($article instanceof Stylo) {
             $this->styloMapper->update($article);
         } else {

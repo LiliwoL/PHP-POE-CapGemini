@@ -89,5 +89,4 @@ $dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
  * @var ArticleManager $articleManager
  */
 $articleManager = $dependencyInjectionContainer->get(ArticleManager::class);
-
 $articleManager->creerStylo("Waterman", "StyloPlume", "Stylo des ministres", 666, 1000, "noir");

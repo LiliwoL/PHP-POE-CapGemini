@@ -64,7 +64,7 @@ class DependencyInjectionContainer
             
             ArticleManager::class => $articleManager,
 
-            // On garde ces lignes pour la rétro compatibilité, mais elles ne sont plus uitiles!
+            // On garde ces lignes pour la rétro compatibilité, mais elles ne sont plus utiles!
             StyloMapper::class => $styloMapper,
             ArticleMapper::class => $articleMapper,
         ];
