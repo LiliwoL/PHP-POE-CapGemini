@@ -60,7 +60,7 @@ class Router
 
 
         // Lecture des infos de la route
-        // Pour rappel de ce que peut contenur $routeInfo:
+        // Pour rappel de ce que peut contenir $routeInfo:
         /*
              [self::NOT_FOUND]
         *     [self::METHOD_NOT_ALLOWED, ['GET', 'OTHER_ALLOWED_METHODS']]
