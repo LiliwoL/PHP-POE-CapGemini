@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\BLL\ArticleManager;
 use App\Http\Request;
 use App\Http\Response;
+use App\BLL\ArticleManager;
+use App\DAL\Storage\ArticleStorage;
 
 class ArticleController extends AbstractController
 {
@@ -88,5 +89,37 @@ class ArticleController extends AbstractController
                 'ramettes' => $ramettes
             ]
         );
+    }
+
+    public function create(Request $request): Response
+    {
+        if ($request->isMethodPost()) 
+        {
+            // Ramette?
+            if ($request->get('type') === ArticleStorage::TYPE_RAMETTE)
+            {
+                $this->articleManager->creerRamette(
+                    $request->get('marque'),
+                    $request->get('reference'),
+                    $request->get('designation'),
+                    $request->get('prixUnitaire'),
+                    $request->get('qteStock'),
+                    $request->get('grammage')
+                );
+            }else {
+                $this->articleManager->creerStylo(
+                    $request->get('marque'),
+                    $request->get('reference'),
+                    $request->get('designation'),
+                    $request->get('prixUnitaire'),
+                    $request->get('qteStock'),
+                    $request->get('couleur')
+                );
+            }
+
+            return new Response('', ['Location' => $_ENV['URL_BASE'] . '/articles']);
+        }else{
+            return $this->render('articles/create.html.twig');
+        }        
     }
 }

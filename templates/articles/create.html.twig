@@ -1,0 +1,51 @@
+{% include '_header.html.twig' %}
+
+<h1>Créer un nouvel article</h1>
+
+<form action="/ENI_PHP/public/index.php/articles/create" method="POST">
+    
+    <div class="form-group">
+        <label for="type">Type</label>
+        <select name="type" id="type" class="form-select">
+            <option value="STYLO">Stylo</option>
+            <option value="RAMETTE">Ramette</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="marque">Marque</label>
+        <input value="" name="marque" type="text" class="form-control" id="marque" aria-describedby="marque" placeholder="Marque">
+    </div>
+    <div class="form-group">
+        <label for="reference">Reference</label>
+        <input value="" name="reference" type="text" class="form-control" id="reference" aria-describedby="reference" placeholder="Reference">
+        <button type="submit" class="btn btn-primary">Créer la fiche</button>
+    </div>
+    <div class="form-group">
+        <label for="designation">Designation</label>
+        <input value="" name="designation" type="text" class="form-control" id="designation" aria-describedby="designation" placeholder="Designation">
+    </div>
+    <div class="form-group">
+        <label for="prixUnitaire">Prix Unitaire</label>
+        <input value="" name="prixUnitaire" type="text" class="form-control" id="prixUnitaire" aria-describedby="prixUnitaire" placeholder="Prix Unitaire">
+    </div>
+
+    <div class="form-group">
+        <label for="qteStock">Quantité Stock</label>
+        <input value="" name="qteStock" type="text" class="form-control" id="qteStock" aria-describedby="qteStock" placeholder="Quantité Stock">    
+    </div>
+
+    <div class="form-group">
+        <label for="couleur">Couleur</label>
+        <input value="" name="couleur" type="text" class="form-control" id="couleur" aria-describedby="couleur" placeholder="Couleur">
+    </div>
+
+    <div class="form-group">
+        <label for="grammage">Grammage</label>
+        <input value="" name="grammage" type="text" class="form-control" id="grammage" aria-describedby="grammage" placeholder="Grammage">    
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer un article</button>
+</form>
+
+{% include '_footer.html.twig' %}

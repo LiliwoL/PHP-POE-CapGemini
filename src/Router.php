@@ -22,10 +22,24 @@ class Router
             function( \FastRoute\RouteCollector $r )
             {
                 // Routes de l'application
+
+                /*
+                    Articles
+                */
                 $r->addRoute(
                     'GET',
                     '/articles',
                     [ ArticleController::class, 'listArticles' ]
+                );
+                $r->addRoute(
+                    'GET',
+                    '/articles/create',
+                    [ ArticleController::class, 'create' ]
+                );
+                $r->addRoute(
+                    'POST',
+                    '/articles/create',
+                    [ ArticleController::class, 'create' ]
                 );
 
                 /*
@@ -72,7 +86,6 @@ class Router
             $httpMethod,
             $uri
         );
-
 
         // Lecture des infos de la route
         // Pour rappel de ce que peut contenir $routeInfo:
