@@ -3,10 +3,9 @@
 // Chargement du noyau de l'application
 require dirname(__DIR__).'/src/AppKernel.php';
 
-
+use App\Controller\ArticleController;
 use App\HTTP\Request;
 use App\DependencyInjectionContainer;
-use App\Controller\StagiaireController;
 
 
 // Interprétation de la requ^te
@@ -16,16 +15,22 @@ $request = Request::createFromGlobal();
 // Appel au DIC
 $dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
 
+
+// controlleur Article
 /**
- * @var StagiaireController $stagiaireController
+ * @var ArticleController $articleController
  */
-$stagiaireController = $dependencyInjectionContainer->get( StagiaireController::class );
+$articleController = $dependencyInjectionContainer->get(ArticleController::class);
+
 
 // Appel à l'action du controlleur
 /**
  * @var Response $response
  */
-$response = $stagiaireController->listView( $request );
+//$response = $articleController->listStylos( $request );
+//$response = $articleController->listRamettes( $request );
+$response = $articleController->listArticles( $request );
+
 
 // Invoke Response
 

@@ -60,18 +60,16 @@ class StagiaireController extends AbstractController
         $stagiaires = $this->stagiaireManager->listerLesStagiaires();
 
         // Renvoi avec TWIG
-        return new Response(
-            __TWIG__->render(
-                'stagiaire/list.html.twig',
-                [
-                    'stagiaires' => $stagiaires
-                ]
-            )
+        return $this->render(
+            'stagiaire/list',
+            [
+                'stagiaires' => $stagiaires
+            ]
         );
 
         // Renvoi sans TWIG
         /*
-            return $this->render(
+            return $this->renderSansTwig(
                 'stagiaire/list',
                 [
                     'stagiaires' => $stagiaires

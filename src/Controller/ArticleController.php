@@ -7,7 +7,7 @@ use App\BLL\StagiaireManager;
 use App\Http\Request;
 use App\Http\Response;
 
-class ArticleController
+class ArticleController extends AbstractController
 {
     public function __construct(private ArticleManager $articleManager)
     {
@@ -24,14 +24,65 @@ class ArticleController
     public function listStylos(Request $request): Response
     {
         /**
-         *  @var Collection $articles
+         *  @var Collection $stylos
          */
-        $articles = $this->articleManager->recupererTousLesStylos();
+        $stylos = $this->articleManager->recupererTousLesStylos();
 
+        /* On appelle désormais $this->render */
+        /*
         return new Response(
-            json_encode($articles),
+            json_encode($stylos),
 
             ['Content-Type' => 'application/json']
+        );*/
+
+        return $this->render(
+            'articles/list.html.twig', 
+            [
+                'articles' => $stylos,
+            ]
+        );
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function listRamettes(Request $request): Response
+    {
+        /**
+         *  @var Collection $ramettes
+         */
+        $ramettes = $this->articleManager->recupererToutesLesRamettes();
+
+        return $this->render(
+            'articles/list.html.twig', 
+            [
+                'articles' => $ramettes,
+            ]
+        );
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function listArticles(Request $request): Response
+    {
+        /**
+         *  @var Collection $articles
+         */
+        $articles = $this->articleManager->recupererTousLesArticles();
+
+        return $this->render(
+            'articles/list.html.twig', 
+            [
+                'articles' => $articles,
+            ]
         );
     }
 }

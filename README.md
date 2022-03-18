@@ -300,3 +300,12 @@ Il faut:
 * Créer l’interface ArticleStorage et définir les méthodes présentes dans le diagramme de classe TP3
 * Utiliser l’interface ArticleStorage dans ArticleMySQLStorage
 * Créer ArticleMapper et StyloMapper en vous basant sur le diagramme de classe TP3
+
+
+*** TP 6
+
+On va utiliser le moteur **Twig**
+
+    composer require "twig/twig:^3.0"
+
+Utilisation d'un fichier **AppKernel.php** pour instancier et déclarer des constantes globales
