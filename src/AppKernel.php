@@ -24,7 +24,6 @@ $dotenv->load();
 
 
 
-
 // Chargement de Twig
 $loader = new \Twig\Loader\FilesystemLoader( __ROOT__ . 'templates');
 define(

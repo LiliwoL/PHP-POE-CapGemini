@@ -1,0 +1,57 @@
+{% include '_header.html.twig' %}
+
+<h1>La liste des Stylos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Marque</th>
+            <th scope="col">Référence</th>
+            <th scope="col">Désignation</th>
+            <th scope="col">Prix Unitaire</th>
+            <th scope="col">Quantité en stock</th>
+            <th scope="col">Couleur</th>
+        </tr>
+    </thead>
+    <tbody>
+        {# {{ dump(stagiaires) }} #}
+
+        {% for article in stylos %}
+            <tr>
+                <th scope="row">
+                    {{ article.idArticle }}
+                </th>
+                <td>
+                    {{ article.marque }}
+                </td>
+                <td>
+                    {{ article.reference }}
+                </td>
+                <td>
+                    {{ article.designation }}
+                </td>
+                <td>
+                    {{ article.prixUnitaire }}
+                </td>
+                <td>
+                    {{ article.qteStock }}
+                </td>
+                <td>
+                    {{ article.couleur }}
+                </td>
+            </tr>
+        {% endfor %}        
+  </tbody>
+</table>
+
+
+On pourrait plutôt faire un include avec des variables
+{% include 'articles/_listArticles.html.twig' with {'type': 'stylos', 'articles': stylos} %}
+
+
+<hr>
+
+<h1>La liste des Ramettes</h1>
+{% include 'articles/_listArticles.html.twig' with {'type': 'ramettes', 'articles': ramettes} %}
+
+{% include '_footer.html.twig' %}

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\BLL\ArticleManager;
-use App\BLL\StagiaireManager;
 use App\Http\Request;
 use App\Http\Response;
 
@@ -76,12 +75,17 @@ class ArticleController extends AbstractController
         /**
          *  @var Collection $articles
          */
-        $articles = $this->articleManager->recupererTousLesArticles();
+        //$articles = $this->articleManager->recupererTousLesArticles();
+
+        $stylos = $this->articleManager->recupererTousLesStylos();
+        $ramettes = $this->articleManager->recupererToutesLesRamettes();
+
 
         return $this->render(
-            'articles/list.html.twig', 
+            'articles/listArticles.html.twig', 
             [
-                'articles' => $articles,
+                'stylos' => $stylos,
+                'ramettes' => $ramettes
             ]
         );
     }

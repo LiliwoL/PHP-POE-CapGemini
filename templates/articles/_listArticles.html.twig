@@ -1,0 +1,48 @@
+<h1>La liste des {{ type }}</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Marque</th>
+            <th scope="col">Référence</th>
+            <th scope="col">Désignation</th>
+            <th scope="col">Prix Unitaire</th>
+            <th scope="col">Quantité en stock</th>
+            <th scope="col">Couleur</th>
+            <th scope="col">Grammage</th>
+        </tr>
+    </thead>
+    <tbody>
+        {# {{ dump(stagiaires) }} #}
+
+        {% for article in articles %}
+            <tr>
+                <th scope="row">
+                    {{ article.idArticle }}
+                </th>
+                <td>
+                    {{ article.marque }}
+                </td>
+                <td>
+                    {{ article.reference }}
+                </td>
+                <td>
+                    {{ article.designation }}
+                </td>
+                <td>
+                    {{ article.prixUnitaire }}
+                </td>
+                <td>
+                    {{ article.qteStock }}
+                </td>
+                <td>
+                    {{ article.couleur }}
+                </td>
+                <td>
+                    {{ article.grammage }}
+                </td>
+            </tr>
+        {% endfor %}
+        
+  </tbody>
+</table>
