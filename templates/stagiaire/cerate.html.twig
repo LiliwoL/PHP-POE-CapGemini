@@ -1,0 +1,19 @@
+{% include '_header.html.twig' %}
+
+<h1>Créer un nouveau stagiaire</h1>
+
+<form action="/create" method="POST">
+    <div class="form-group">
+        <label for="nom">Nom</label>
+        <input value="" name="nom" type="text" class="form-control" id="nom" aria-describedby="nom" placeholder="Nom">
+    </div>
+
+    <div class="form-group">
+        <label for="ddn">Date de naissance</label>
+        <input value="" name="ddn" type="date" class="form-control" id="ddn" aria-describedby="ddn" placeholder="Date de naissance">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer la fiche</button>
+</form>
+
+{% include '_footer.html.twig' %}

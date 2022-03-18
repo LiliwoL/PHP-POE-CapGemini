@@ -28,10 +28,24 @@ class Router
                     [ ArticleController::class, 'listArticles' ]
                 );
 
+                /*
+                    Stagiaires
+                */
                 $r->addRoute(
                     'GET',
                     '/',
-                    [ StagiaireController::class, 'listView' ]                    
+                    [ StagiaireController::class, 'listView' ]
+                );
+                
+                $r->addRoute(
+                    'GET',
+                    '/create',
+                    [ StagiaireController::class, 'create' ]
+                );
+                $r->addRoute(
+                    'POST',
+                    '/',
+                    [ StagiaireController::class, 'create' ]                    
                 );
             }
         );
@@ -40,7 +54,7 @@ class Router
         $httpMethod = $_SERVER['REQUEST_METHOD'];
         $uri = $_SERVER['REQUEST_URI'];
 
-        // Nettoyage de l'uri pour prendre en compte les sous dossiers et non réécriture de surls
+        // Nettoyage de l'uri pour prendre en compte les sous dossiers et non réécriture des urls
         $uri = str_replace( $_ENV['URL_BASE'], "", $uri);
 
         // Nettoyage de l'uri pour virer les éventuels params en GET

@@ -83,4 +83,19 @@ class StagiaireController extends AbstractController
             );
         */
     }
+
+    /**
+     * Action de création GET ou POST
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function create( Request $request ): Response
+    {
+        // En GET on ne fait que renvoyer la vue
+        return $this->render(
+            'stagiaire/create.html.twig',
+            []
+        );
+    }
 }
