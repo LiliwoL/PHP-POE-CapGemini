@@ -5,6 +5,9 @@ CREATE TABLE `stagiaires` (
   PRIMARY KEY (`identifiant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE stagiaires 
+ADD COLUMN ddn DATE NULL;
+
 INSERT INTO `stagiaires` (`identifiant`, `nom`) VALUES
 (1,	'Inès'),
 (2,	'Marie'),

@@ -24,13 +24,13 @@ class Router
                 // Routes de l'application
                 $r->addRoute(
                     'GET',
-                    '/ENI_PHP/public/index.php/articles',
+                    '/articles',
                     [ ArticleController::class, 'listArticles' ]
                 );
 
                 $r->addRoute(
                     'GET',
-                    '/ENI_PHP/public/',
+                    '/',
                     [ StagiaireController::class, 'listView' ]                    
                 );
             }
@@ -41,6 +41,7 @@ class Router
         $uri = $_SERVER['REQUEST_URI'];
 
         // Nettoyage de l'uri pour prendre en compte les sous dossiers et non réécriture de surls
+        $uri = str_replace( $_ENV['URL_BASE'], "", $uri);
 
         // Nettoyage de l'uri pour virer les éventuels params en GET
         if ( false !==  ($pos = strpos( $uri, '?') ) )
