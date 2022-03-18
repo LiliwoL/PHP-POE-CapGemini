@@ -1,12 +1,13 @@
 <?php
 namespace App\Entite;
 
+use DateTime;
 use JsonSerializable;
 
 class Stagiaire implements JsonSerializable
 {
 
-    public function __construct(private string $nom, private ?int $identifiant = null){
+    public function __construct(private string $nom, private ?DateTime $ddn = null, private ?int $identifiant = null){
     }
 
     public function getNom(){
@@ -22,6 +23,18 @@ class Stagiaire implements JsonSerializable
         return $this->identifiant;
     }
 
+    public function getDdn(): ?DateTime
+    {
+        return $this->ddn;
+    }
+
+    public function setDdn(DateTime $ddn): self
+    {
+        $this->ddn = $ddn;
+
+        return $this;
+    }
+
     /**
      * Méthode static qui va transformer un tableau en entité Stagiaire
      *
@@ -35,6 +48,7 @@ class Stagiaire implements JsonSerializable
         // Renvoi d'une instance de l'entité
         return new self(
             $state['nom'],
+            $state['ddn'],
             $state['identifiant']
         );
     }
@@ -46,6 +60,10 @@ class Stagiaire implements JsonSerializable
      */
     public function jsonSerialize(): mixed
     {
-        return get_object_vars( $this );
+        return [
+            'nom' => $this->getNom(),
+            'ddn' => $this->getDdn()->format('Y-m-d'),
+            'identifiant' => $this->getIdentifiant(),
+        ];
     }
 }

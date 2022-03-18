@@ -2,8 +2,9 @@
 
 namespace App\DAL\Storage;
 
-use InvalidArgumentException;
 use PDO;
+use DateTime;
+use InvalidArgumentException;
 
 class StagiaireMySQLStorage implements StagiaireStorage
 {
@@ -14,16 +15,17 @@ class StagiaireMySQLStorage implements StagiaireStorage
         $this->dbh = Database::getInstance()->getDbh();
     }
 
-    public function insert(string $nom): int
+    public function insert(string $nom, DateTime $ddn): int
     {
         $sth = $this->dbh->prepare('
             INSERT INTO stagiaires 
-            (nom)
-            VALUES (:nom)
+            (nom, ddn)
+            VALUES (:nom, :ddn)
         ');
 
         $sth->execute([
-            ':nom' => $nom
+            ':nom' => $nom,
+            ':ddn' => $ddn
         ]);
 
         // LastInsertId renvoie une string ou false
@@ -60,16 +62,26 @@ class StagiaireMySQLStorage implements StagiaireStorage
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function update(string $nom, int $id)
+    /**
+     * Undocumented function
+     *
+     * @param string $nom
+     * @param DateTime $ddn
+     * @param integer $id
+     * @return void
+     */
+    public function update(string $nom, DateTime $ddn, int $id)
     {
         $sth = $this->dbh->prepare('
             UPDATE stagiaires
-            SET nom = :nom           
+            SET nom = :nom
+            SET ddn = :ddn
             WHERE identifiant = :id
         ');
 
         $sth->execute([
             ':nom' => $nom,
+            ':ddn' => $ddn,
             ':id' => $id
         ]);
     }

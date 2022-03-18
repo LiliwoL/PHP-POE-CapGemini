@@ -2,8 +2,9 @@
 
 namespace App\BLL;
 
-use App\DAL\Mapper\StagiaireMapper;
+use DateTime;
 use App\Entite\Stagiaire;
+use App\DAL\Mapper\StagiaireMapper;
 
 class StagiaireManager
 {
@@ -19,13 +20,18 @@ class StagiaireManager
      * @param string $nom
      * @return void
      */
-    public function creerUnStagiaire( string $nom )
+    public function creerUnStagiaire( string $nom, string $ddn )
     {
         // Créer l'instance
-        $stagiaire = new Stagiaire( $nom );
+        $stagiaire = new Stagiaire(
+            $nom,
+            $ddn = DateTime::createFromFormat('Y-m-d', $ddn)
+        );
 
         // Appel au mapper pour stocker en base
         $this->mapper->insert( $stagiaire );
+
+        // Renvoi de confirmation
     }
 
     /**

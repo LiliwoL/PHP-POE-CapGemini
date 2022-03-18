@@ -26,7 +26,10 @@ class StagiaireMapper
     {
         // Appel à la méthode insert du storage
         // La méthode renvoie un entier, ici, on n'en fait rien
-        $this->stagiaireStorage->insert( $stagiaire->getNom() );
+        $this->stagiaireStorage->insert(
+            $stagiaire->getNom(),
+            $stagiaire->getDdn()
+        );
     }
 
     // Méthode pour findById
@@ -52,6 +55,7 @@ class StagiaireMapper
         // Appel à la méthode update du storage
         $this->stagiaireStorage->update(
             $stagiaire->getNom(),
+            $stagiaire->getDdn(),
             $stagiaire->getIdentifiant()
         );
     }

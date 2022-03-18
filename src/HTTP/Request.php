@@ -69,10 +69,10 @@ class Request
     }
 
     /**
-     * Undocumented function
+     * Accès aux paramètres de la requête
      *
      * @param string $field
-     * @return void
+     * @return mixed
      */
     public function get( string $field )
     {

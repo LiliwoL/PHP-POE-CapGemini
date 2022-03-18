@@ -92,10 +92,25 @@ class StagiaireController extends AbstractController
      */
     public function create( Request $request ): Response
     {
-        // En GET on ne fait que renvoyer la vue
-        return $this->render(
-            'stagiaire/create.html.twig',
-            []
-        );
+        // Test de la méthode de la request
+        if ( $request->isMethodPost() )
+        {
+            // Récupérationdes valeurs dans la requête et on les passe à la méthode crerUnStagiaire du manager
+            $this->stagiaireManager->creerUnStagiaire(
+                $request->get('nom'),
+                $request->get('ddn')
+            );
+
+            // Ici on pourrait tester que tout est ok
+
+            // Redirection vers la liste de stagiaires
+            return new Response('', ['Location' => '/']);
+        }else{
+            // En GET on ne fait que renvoyer la vue
+            return $this->render(
+                'stagiaire/create.html.twig',
+                []
+            );
+        }
     }
 }

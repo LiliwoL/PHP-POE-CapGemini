@@ -36,7 +36,7 @@ class Router
                     '/',
                     [ StagiaireController::class, 'listView' ]
                 );
-                
+
                 $r->addRoute(
                     'GET',
                     '/create',
@@ -44,8 +44,8 @@ class Router
                 );
                 $r->addRoute(
                     'POST',
-                    '/',
-                    [ StagiaireController::class, 'create' ]                    
+                    '/create',
+                    [ StagiaireController::class, 'create' ]
                 );
             }
         );
