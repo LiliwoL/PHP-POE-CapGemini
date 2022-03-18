@@ -119,9 +119,9 @@ class Router
                 }
 
                 // Appel de l'action du controleur spécifiée dans $target[1]
-                $reponse = $controller->$action( $request );
+                $response = $controller->$action( $request );
 
-                $reponse();
+                $response();
                 break;
         }
     }
