@@ -19,6 +19,7 @@
     "require": {
         "vlucas/phpdotenv": "^5.4",
         "twig/twig": "^3.0",
+        "respect/validation": "^2.2",
         "nikic/fast-route": "^1.3"
     }
 }
