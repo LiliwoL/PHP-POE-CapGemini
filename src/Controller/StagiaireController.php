@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
-use App\BLL\StagiaireManager;
-use App\Entite\Collection;
 use App\Http\Request;
 use App\Http\Response;
+use App\Entite\Collection;
+use App\BLL\StagiaireManager;
+use App\Controller\AbstractController;
 
-class StagiaireController
+class StagiaireController extends AbstractController
 {
     public function __construct( private StagiaireManager $stagiaireManager )
     {
@@ -51,4 +52,31 @@ class StagiaireController
         );
     }
 
+    public function listView( Request $request ): Response
+    {
+        /**
+         * @var ArrayObject $stagiaires
+         */
+        $stagiaires = $this->stagiaireManager->listerLesStagiaires();
+
+        // Renvoi avec TWIG
+        return new Response(
+            __TWIG__->render(
+                'stagiaire/list.html.twig',
+                [
+                    'stagiaires' => $stagiaires
+                ]
+            )
+        );
+
+        // Renvoi sans TWIG
+        /*
+            return $this->render(
+                'stagiaire/list',
+                [
+                    'stagiaires' => $stagiaires
+                ]
+            );
+        */
+    }
 }
