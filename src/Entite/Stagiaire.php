@@ -45,6 +45,10 @@ class Stagiaire implements JsonSerializable
     {
         // On devrait vérifier le contenu de $state !!
 
+        if ($state['ddn'] !== null) {
+            $state['ddn'] = DateTime::createFromFormat('Y-m-d', $state['ddn']);
+        }
+
         // Renvoi d'une instance de l'entité
         return new self(
             $state['nom'],

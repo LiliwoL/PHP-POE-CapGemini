@@ -104,7 +104,7 @@ class StagiaireController extends AbstractController
             // Ici on pourrait tester que tout est ok
 
             // Redirection vers la liste de stagiaires
-            return new Response('', ['Location' => '/']);
+            return new Response('', ['Location' => $_ENV['URL_BASE'] . '/'] );
         }else{
             // En GET on ne fait que renvoyer la vue
             return $this->render(

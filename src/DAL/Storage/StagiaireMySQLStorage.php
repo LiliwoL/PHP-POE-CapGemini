@@ -25,7 +25,7 @@ class StagiaireMySQLStorage implements StagiaireStorage
 
         $sth->execute([
             ':nom' => $nom,
-            ':ddn' => $ddn
+            ':ddn' => $ddn->format('Y-m-d')
         ]);
 
         // LastInsertId renvoie une string ou false
@@ -81,7 +81,7 @@ class StagiaireMySQLStorage implements StagiaireStorage
 
         $sth->execute([
             ':nom' => $nom,
-            ':ddn' => $ddn,
+            ':ddn' => $ddn->format('Y-m-d'),
             ':id' => $id
         ]);
     }
