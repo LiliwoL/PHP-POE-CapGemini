@@ -309,3 +309,19 @@ On va utiliser le moteur **Twig**
     composer require "twig/twig:^3.0"
 
 Utilisation d'un fichier **AppKernel.php** pour instancier et déclarer des constantes globales
+
+
+***
+
+## Routing
+
+
+Utilisation de FastRoute
+
+### Installation
+
+    composer require nikic/fast-route
+
+### Création du Router
+
+Dans src/Router.php

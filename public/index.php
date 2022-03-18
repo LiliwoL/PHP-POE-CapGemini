@@ -1,95 +1,10 @@
 <?php
 
-require dirname(__DIR__).'/vendor/autoload.php';
+use App\Router;
 
-// Use du namespace 
+// Chargement du noyau de l'application
+require dirname(__DIR__).'/src/AppKernel.php';
 
-use Dotenv\Dotenv;
-use App\Entite\Stylo;
-use App\HTTP\Request;
-use App\Http\Response;
-use App\Entite\Ramette;
-use App\BLL\ArticleManager;
-use App\BLL\StagiaireManager;
-use App\DAL\Storage\Database;
-use App\DependencyInjectionContainer;
-use App\Controller\StagiaireController;
+$router = new Router();
 
-/*
-    ****************** Entités *******************
-*/
-// Instance de ramette
-    $ramette = new Ramette("Xerox", "XB41", "Superbe ramette", 154, 1000, 180);
-    $ramette->setGrammage(180);
-
-    var_dump($ramette);
-    echo "En utilisant la méthode __toString(): " . $ramette;
-
-// Instance de Style
-    $stylo = new Stylo("Pilot", "5", "bien comme stylo", 5, 10000, "noir");
-    var_dump($stylo);
-    echo "Mon stylo: " .$stylo;
-
-
-/*
-    ****************************** DAL *********
-*/
-
-// Chargement du .env
-$dotenv = Dotenv::createImmutable(dirname(__DIR__));
-$dotenv->load();
-
-// Récupération de l'Instance de la Database
-$database = Database::getInstance();
-var_dump($database);
-
-// Lancement d'une requête
-$articles = $database
-            ->getDbh()
-            ->query('SELECT * FROM articles')
-            ->fetchAll(PDO::FETCH_ASSOC);
-
-var_dump($articles);
-
-/*
-    ****************************** Dependancy Injection *********
-*/
-
-/* $dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
-
-// Affichage de toutes les deps
-$dependencyInjectionContainer->listDependencies();
-
-echo "Quelle dépendance?";
-var_dump($dependencyInjectionContainer->get(StagiaireMapper::class));
-
-echo "A quoi correspond StagiaireMapper::class:" . StagiaireMapper::class;
-
-// Affichage de toutes les deps
-$dependencyInjectionContainer->listDependencies();
- */
-
-/*
-    ****************** Stagiaire Manager ************
-*/
-
-$dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
-
-// Créer un stagiaire depuis le contrôleur frontal
-$stagiaireManager = $dependencyInjectionContainer->get(StagiaireManager::class);
-
-$stagiaireManager->creerUnStagiaire( "Nicolas" );
-
-
-/*
-    ****************** Article Manager ************
-*/
-
-$dependencyInjectionContainer = DependencyInjectionContainer::getInstance();
-
-// Créer un stagiaire depuis le contrôleur frontal
-/**
- * @var ArticleManager $articleManager
- */
-$articleManager = $dependencyInjectionContainer->get(ArticleManager::class);
-$articleManager->creerStylo("Waterman", "StyloPlume", "Stylo des ministres", 666, 1000, "noir");
+$router();

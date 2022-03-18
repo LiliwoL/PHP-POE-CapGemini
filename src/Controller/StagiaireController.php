@@ -52,6 +52,12 @@ class StagiaireController extends AbstractController
         );
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function listView( Request $request ): Response
     {
         /**
@@ -59,9 +65,9 @@ class StagiaireController extends AbstractController
          */
         $stagiaires = $this->stagiaireManager->listerLesStagiaires();
 
-        // Renvoi avec TWIG
+        // Renvoi d'une réponse avec TWIG
         return $this->render(
-            'stagiaire/list',
+            'stagiaire/list.html.twig',
             [
                 'stagiaires' => $stagiaires
             ]
